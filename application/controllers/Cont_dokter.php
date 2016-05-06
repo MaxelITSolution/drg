@@ -5,7 +5,8 @@ class Cont_dokter extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("Model_basic");
-		$this->load->helper("form","url");
+		$this->load->helper("form");
+		$this->load->helper("url");
 	}
 	public function index()
 	{

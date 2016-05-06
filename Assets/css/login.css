@@ -1,0 +1,57 @@
+.Header ul 
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	background-color:#333;
+}
+.Header ul li
+{
+	float:left;
+}
+.Header ul li a
+{
+	display:block;
+	padding:10px 8px 8px 8px;
+	width:125px;
+	color:white;
+}
+
+.Header ul li:hover
+{
+	background-color:gray;
+}
+
+#formInsert
+{
+	width:310px;
+	height:250px;
+	border: 1px solid black;
+	display:none;
+	position:absolute;
+	left:38%;
+	background-color:white;
+}
+
+#contentInsert
+{
+	width:95%;
+	height:95%;
+	margin:10px;
+}
+
+#contentInsert input
+{
+	float:right;
+}
+
+#ulInsertKiri li
+{
+	margin-top:3px;
+}
+
+.active
+{
+	background-color:gray;
+}
