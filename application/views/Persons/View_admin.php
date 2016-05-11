@@ -9,7 +9,7 @@
 <script>
 	$(document).ready(function()
 	{	
-		//alert(<?php echo $DataRow;?>);
+		
 		var selectedData;
 		createTable(<?php echo $DataRow;?>);
 		
@@ -22,9 +22,7 @@
 			else {
 				table.$('tr.selected').removeClass('selected');
 				$(this).addClass('selected');
-				
 				selectedData=table.row(this).data()[0];
-				
 			}
 			
 		} );
@@ -43,10 +41,6 @@
 						table.row('.selected').remove().draw( false );
 					}
 				});
-			}
-			else
-			{
-				
 			}
 		} );
 		
