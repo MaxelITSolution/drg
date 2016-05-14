@@ -2,17 +2,21 @@
 <head>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/css/login.css")?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/css/jquery.dataTables.min.css")?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/bootstrap/css/bootstrap.min.css")?>">
+
+
 <script src="<?php echo base_url("Assets/js/jquery-2.2.3.min.js")?>"></script>
 <script src="<?php echo base_url("Assets/js/jquery.dataTables.min.js")?>"></script>
+<script src="<?php echo base_url("Assets/bootstrap/js/bootstrap.min.js")?>"></script>
+
 <title> Hello Guys</title>
 
 <script>
 	$(document).ready(function()
 	{	
-		
 		var selectedData;
-		createTable(<?php echo $DataRow;?>);
-		
+		createTableCustomer(<?php echo $DataRow;?>);
+		createTableDokter(<?php echo $DataRowDokter?>);
 		$('#Table1 tbody').on( 'click', 'tr', function () {
 			var table = $("#Table1").DataTable();
 			if ( $(this).hasClass('selected') ) {
@@ -26,7 +30,21 @@
 			}
 			
 		} );
- 
+		
+		$('#TableDokter tbody').on( 'click', 'tr', function () {
+			var table = $("#TableDokter").DataTable();
+			if ( $(this).hasClass('selected') ) {
+				$(this).removeClass('selected');
+				
+			}
+			else {
+				table.$('tr.selected').removeClass('selected');
+				$(this).addClass('selected');
+				selectedData=table.row(this).data()[0];
+			}
+			
+		} );
+		
 		$('#deletebutton').click( function () {
 			
 			if(confirm("Yakin mau di delete?"))
@@ -159,8 +177,24 @@
 			});
 			
 		});
+		function createTableDokter(DataRow)
+		{
+			$("#TableDokter").DataTable(
+			{
+				data: DataRow,
+				columns:
+				[
+				{title:"Kode Dokter"},
+				{title:"Nama Dokter"},
+				{title:"Alamat Dokter"},
+				{title:"HP Dokter"},
+				{title:"Status Dokter"}
+				],
+				"Destroy":true
+			});
+		}
 		
-		function createTable(DataRow)
+		function createTableCustomer(DataRow)
 		{
 			$("#Table1").DataTable(
 			{
@@ -181,13 +215,27 @@
 				"Destroy":true
 			});
 		}
-		var prev;
+		
 		$("#Mcust").click(function()
 		{
-			$(this).addClass('active');
-			prev = $(this);
+			$(this).addClass('active1');
+			$("#Mdokter").removeClass('active1');
 			$("#MasterCustomer").slideDown("Fast");
+			$("#MasterDokter").slideUp("Fast");
+			
 		})
+		$("#Mdokter").click(function()
+		{
+			$("#Mcust").removeClass('active1');
+			$(this).addClass('active1');
+			prev = $(this);
+			$("#MasterDokter").slideDown("Fast");
+			$("#MasterCustomer").slideUp("Fast");
+		})
+		$("#Dinsert").click(function()
+		{
+			$("#myModal").modal("show");
+		});
 	});
 </script>
 </head>
@@ -198,6 +246,7 @@
 		<li class="LIUL"><a href="<?php echo site_url("Cont_login/index")?>">Logout</a></li>
 		<li ><a>Hello Admin</a></li>
 		<li id="Mcust" style="float:right;"><a href="#">Master Customer</a></li>
+		<li id="Mdokter" style="float:right;"><a href="#">Master Dokter</a></li>
 	</ul>
 </div>
 <div id="MasterCustomer" style="display:none;">
@@ -253,5 +302,77 @@
 	</div>
 	</div>
 </div>
+<div id="MasterDokter" style="display:none;">
+	<div id="content" class="container-fluid">
+		<table id="TableDokter" class="display" cellspacing="0" width="100%">
+		
+		</table>
+		<div class="container-fluid">
+			<div class="row">
+				<button id="Dinsert" type="button" class="btn btn-primary" value="insert">Insert</button>
+				<button type="button" class="btn btn-primary" value="insert">Update</button>
+				<button type="button" class="btn btn-primary" value="insert">Delete</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="Footer">
+
+	</div>
+</div>
+
+
 </body>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display:none">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Tambah Antrian</h4>
+      </div>
+      <div class="modal-body">	
+		<div id="form1" >
+			<form role="form" class="form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="usr">Kode Dokter</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="Nama">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3 " for="usr">Nama Dokter</label>
+					<div class="col-sm-7">
+						<input type="text" data-default="20:48" class="form-control clockpicker" id="datetimepicker4">
+					</div>
+				</div>
+				<div class="form-group ui-widget">
+					<label class="control-label col-sm-3" for="usr">Alamat Dokter</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="Dokter">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="usr">Handphone Dokter</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="Nama">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="usr">Status Dokter</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="Nama">
+					</div>
+				</div>
+			</form>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="saveButton" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
 <html>

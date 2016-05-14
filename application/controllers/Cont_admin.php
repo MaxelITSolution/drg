@@ -10,15 +10,15 @@ class Cont_admin extends CI_Controller
 	}
 	public function index()
 	{
-		$data["DataRow"] = $this->CreateDataRow();
+		$data["DataRow"] = $this->CreateDataRow("user");
+		$data["DataRowDokter"] = $this->CreateDataRow("dokter");
 		$this->load->view("Persons/View_admin",$data);
 	}
 	
 	public function DeleteDataTable()
 	{
 		$user_id = $this->input->post("userID");
-		
-		
+
 		$this->Model_basic->deleteData("user",Array("user_id"=>$user_id));
 	}
 	public function insertDataUser()
@@ -37,7 +37,7 @@ class Cont_admin extends CI_Controller
 		
 		$this->Model_basic->insertDataUser("user",$dataInsert);
 		
-		echo $this->CreateDataRow();
+		echo $this->CreateDataRow("user");
 		
 	}
 	
@@ -57,23 +57,39 @@ class Cont_admin extends CI_Controller
 		$dataUpdate=Array("user_name"=>$username,"user_username"=>$user_username,"user_password"=>$uer_password,"user_alamat"=>$user_alamat,"user_hp"=>$user_hp,"user_email"=>$user_email,"user_tipe"=>$user_type,"role_id"=>$role_id,"user_status"=>$user_status);
 		
 		$this->Model_basic->updateData("user",$dataUpdate,Array("user_id"=>$user_id));
-		echo $this->CreateDataRow();
+		echo $this->CreateDataRow("user");
 	}
 	
-	function CreateDataRow()
+	function CreateDataRow($tableName)
 	{
-		$User = $this->Model_basic->getData("user",null);
+		$User = $this->Model_basic->getData($tableName,null);
 		$hasil = Array();
-		if(!empty($User))
+		if($tableName == "user")
 		{
-			foreach($User as $row)
+			if(!empty($User))
 			{
-				$temp = Array($row->user_id,$row->user_name,$row->user_username,$row->user_password,$row->user_alamat,$row->user_hp,$row->user_email,$row->user_tipe,$row->role_id,$row->user_status);
-				Array_push($hasil,$temp);
+				foreach($User as $row)
+				{
+					$temp = Array($row->user_id,$row->user_name,$row->user_username,$row->user_password,$row->user_alamat,$row->user_hp,$row->user_email,$row->user_tipe,$row->role_id,$row->user_status);
+					Array_push($hasil,$temp);
+				}
 			}
+			$DataRow= json_encode($hasil);
+			return $DataRow;
 		}
-		$DataRow= json_encode($hasil);
-		return $DataRow;
+		else if($tableName == "dokter")
+		{
+			if(!empty($User))
+			{
+				foreach($User as $row)
+				{
+					$temp = Array($row->dokter_kode,$row->dokter_nama,$row->dokter_alamat,$row->dokter_hp,$row->dokter_status);
+					Array_push($hasil,$temp);
+				}
+			}
+			$DataRow= json_encode($hasil);
+			return $DataRow;
+		}
 	}
 }
 ?>

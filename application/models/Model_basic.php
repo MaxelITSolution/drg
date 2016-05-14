@@ -28,6 +28,12 @@ class Model_basic extends CI_Model
 		$this->db->where($conditions);
 		$this->db->update($tablename,$data);
 	}
+	
+	public function query($text)
+	{
+		$answer = $this->db->query($text);
+		return $answer->result();
+	}
 }
 
 
