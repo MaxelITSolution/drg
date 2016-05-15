@@ -7,11 +7,13 @@ class Cont_admin extends CI_Controller
 		$this->load->model("Model_basic");
 		$this->load->helper("form");
 		$this->load->helper("url");
+		header('Access-Control-Allow-Origin: *');
 	}
 	public function index()
 	{
 		$data["DataRow"] = $this->CreateDataRow("user");
 		$data["DataRowDokter"] = $this->CreateDataRow("dokter");
+		$data["rowBarang"] = $this->CreateDataRow("barang");
 		$this->load->view("Persons/View_admin",$data);
 	}
 	
@@ -90,6 +92,77 @@ class Cont_admin extends CI_Controller
 			$DataRow= json_encode($hasil);
 			return $DataRow;
 		}
+		else if($tableName == "barang")
+		{
+			if(!empty($User))
+			{
+				foreach($User as $row)
+				{
+					$temp = Array($row->barang_kode,$row->barang_nama,$row->barang_harga,$row->barang_stok,$row->barang_status);
+					Array_push($hasil,$temp);
+				}
+			}
+			$DataRow= json_encode($hasil);
+			return $DataRow;
+		}
+	}
+	function DeleteDataDokter()
+	{
+		$kodeDokter = $this->input->post("kode");
+		$this->Model_basic->deleteData("dokter",Array("dokter_kode"=>$kodeDokter));
+		echo $kodeDokter;
+	}
+	function updateDataDokter()
+	{
+		$kode = $this->input->post("kode_dokter");
+		$namaDokter = $this->input->post("nama_dokter");
+		$alamatDokter = $this->input->post("alamat_dokter");
+		$hpDokter = $this->input->post("hp_dokter");
+		$statusDokter = $this->input->post("status_dokter");
+		$this->Model_basic->updateData("dokter",Array("dokter_nama"=>$namaDokter,"dokter_alamat"=>$alamatDokter,"dokter_hp"=>$hpDokter,"dokter_status"=>$statusDokter),Array("dokter_kode"=>$kode));
+		echo $this->CreateDataRow("dokter");
+	}
+	function insertDataDokter()
+	{
+		$kode = $this->input->post("kode_dokter");
+		$namaDokter = $this->input->post("nama_dokter");
+		$alamatDokter = $this->input->post("alamat_dokter");
+		$hpDokter = $this->input->post("hp_dokter");
+		$statusDokter = $this->input->post("status_dokter");
+		
+		$this->Model_basic->insertDataUser("dokter",Array("dokter_nama"=>$namaDokter,"dokter_alamat"=>$alamatDokter,"dokter_hp"=>$hpDokter,"dokter_status"=>$statusDokter,"dokter_kode"=>$kode));
+		
+		echo $this->CreateDataRow("dokter");
+	}
+	//**************************************BARANG**********************************//
+	function insertDataBarang()
+	{
+		$kodeBarang = $this->input->post("kode_barang");
+		$namaBarang = $this->input->post("nama_barang");
+		$hargaBarang = $this->input->post("harga_barang");
+		$stokBarang = $this->input->post("stok_barang");
+		$statusBarang = $this->input->post("status_barang");
+		
+		$this->Model_basic->insertDataUser("barang",Array("barang_kode"=>$kodeBarang,"barang_nama"=>$namaBarang,"barang_harga"=>$hargaBarang,"barang_stok"=>$stokBarang,"barang_status"=>$statusBarang));
+		
+		echo $this->CreateDataRow("barang");
+	}
+	function updateDataBarang()
+	{
+		$kodeBarang = $this->input->post("kode_barang");
+		$namaBarang = $this->input->post("nama_barang");
+		$hargaBarang = $this->input->post("harga_barang");
+		$stokBarang = $this->input->post("stok_barang");
+		$statusBarang = $this->input->post("status_barang");
+		
+		$this->Model_basic->updateData("barang",Array("barang_nama"=>$namaBarang,"barang_harga"=>$hargaBarang,"barang_stok"=>$stokBarang,"barang_status"=>$statusBarang),Array("barang_kode"=>$kodeBarang));
+		
+		echo $this->CreateDataRow("barang");
+	}
+	function DeleteDataBarang()
+	{
+		$kodeBarang = $this->input->post("kode_barang");
+		$this->Model_basic->deleteData("barang",Array("barang_kode"=>$kodeBarang));
 	}
 }
 ?>

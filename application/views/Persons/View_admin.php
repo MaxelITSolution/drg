@@ -16,23 +16,8 @@
 	{	
 		var selectedData;
 		createTableCustomer(<?php echo $DataRow;?>);
-		createTableDokter(<?php echo $DataRowDokter?>);
 		$('#Table1 tbody').on( 'click', 'tr', function () {
 			var table = $("#Table1").DataTable();
-			if ( $(this).hasClass('selected') ) {
-				$(this).removeClass('selected');
-				
-			}
-			else {
-				table.$('tr.selected').removeClass('selected');
-				$(this).addClass('selected');
-				selectedData=table.row(this).data()[0];
-			}
-			
-		} );
-		
-		$('#TableDokter tbody').on( 'click', 'tr', function () {
-			var table = $("#TableDokter").DataTable();
 			if ( $(this).hasClass('selected') ) {
 				$(this).removeClass('selected');
 				
@@ -90,7 +75,6 @@
 		$("#updatebutton").click(function()
 		{
 			var data = $("#Table1").DataTable().row('.selected').data();
-			alert(data);
 			$("#username").val(data[1]);
 			$("#user_username").val(data[2]);
 			$("#user_password").val(data[3]);
@@ -138,7 +122,7 @@
 				success:function(result)
 				{
 					$("#Table1").DataTable().destroy();
-					createTable(JSON.parse(result));
+					createTableCustomer(JSON.parse(result));
 					$("#formInsert").slideUp("fast",function()
 					{
 						$("#Screen").fadeOut("fast");
@@ -168,7 +152,7 @@
 				{
 					//alert(JSON.parse(result));
 					$("#Table1").DataTable().destroy();
-					createTable(JSON.parse(result));
+					createTableCustomer(JSON.parse(result));
 					$("#formInsert").slideUp("fast",function()
 					{
 						$("#Screen").fadeOut("fast");
@@ -177,22 +161,6 @@
 			});
 			
 		});
-		function createTableDokter(DataRow)
-		{
-			$("#TableDokter").DataTable(
-			{
-				data: DataRow,
-				columns:
-				[
-				{title:"Kode Dokter"},
-				{title:"Nama Dokter"},
-				{title:"Alamat Dokter"},
-				{title:"HP Dokter"},
-				{title:"Status Dokter"}
-				],
-				"Destroy":true
-			});
-		}
 		
 		function createTableCustomer(DataRow)
 		{
@@ -215,26 +183,242 @@
 				"Destroy":true
 			});
 		}
-		
 		$("#Mcust").click(function()
 		{
 			$(this).addClass('active1');
 			$("#Mdokter").removeClass('active1');
+			$("#Mbarang").removeClass('active1');
 			$("#MasterCustomer").slideDown("Fast");
 			$("#MasterDokter").slideUp("Fast");
-			
+			$("#MasterBarang").slideUp("fast");
+			selectedData=null;
 		})
+		
+		//Dokter//***************************************************************************************************************************
+		
+		
+		createTableDokter(<?php echo $DataRowDokter?>);
+		$('#TableDokter tbody').on( 'click', 'tr', function () {
+			var table = $("#TableDokter").DataTable();
+			if ( $(this).hasClass('selected') ) {
+				$(this).removeClass('selected');
+				
+			}
+			else {
+				table.$('tr.selected').removeClass('selected');
+				$(this).addClass('selected');
+				selectedData=table.row(this).data()[0];
+			}
+			
+		} );
+		
 		$("#Mdokter").click(function()
 		{
+			$("#MasterBarang").slideUp("fast");
 			$("#Mcust").removeClass('active1');
+			$("#Mbarang").removeClass('active1');
 			$(this).addClass('active1');
-			prev = $(this);
 			$("#MasterDokter").slideDown("Fast");
 			$("#MasterCustomer").slideUp("Fast");
+			selectedData=null;
+		})
+		$("#Dupdate").click(function()
+		{
+			var data = $("#TableDokter").DataTable().row('.selected').data();
+
+			$("#kodeDokter").val(data[0]);
+			$("#namaDokter").val(data[1]);
+			$("#alamatDokter").val(data[2]);
+			$("#hpdokter").val(data[3]);
+			$("#statusdokter").val(data[4]);
+			$("#saveButton").val("Update");
+			$("#myModal").modal("show");
+		});
+		$("#saveButton").click(function()
+		{
+			if($("#saveButton").val() == "Update")
+			{
+				$.ajax({
+					url:"<?php echo site_url("Cont_admin/updateDataDokter")?>",
+					type:"post",
+					datatype:"json",
+					data:{kode_dokter:$("#kodeDokter").val(),nama_dokter:$("#namaDokter").val(),alamat_dokter:$("#alamatDokter").val(),hp_dokter:$("#hpdokter").val(),status_dokter:$("#statusdokter").val()},
+					success:function(result)
+					{
+						$("#TableDokter").DataTable().destroy();
+						createTableDokter(JSON.parse(result));
+						$("#myModal").modal("hide");
+					}
+				})
+			}
+			else if($("#saveButton").val() == "Insert")
+			{
+				$.ajax({
+					url:"<?php echo site_url("Cont_admin/insertDataDokter")?>",
+					type:"post",
+					datatype:"json",
+					data:{kode_dokter:$("#kodeDokter").val(),nama_dokter:$("#namaDokter").val(),alamat_dokter:$("#alamatDokter").val(),hp_dokter:$("#hpdokter").val(),status_dokter:$("#statusdokter").val()},
+					success:function(result)
+					{
+						$("#TableDokter").DataTable().destroy();
+						createTableDokter(JSON.parse(result));
+						$("#myModal").modal("hide");
+					}
+				})
+			}
+			
 		})
 		$("#Dinsert").click(function()
 		{
+			$("#saveButton").val("Insert");
+			$("#kodeDokter").val("");
+			$("#namaDokter").val("");
+			$("#alamatDokter").val("");
+			$("#hpdokter").val("");
+			$("#statusdokter").val("");
 			$("#myModal").modal("show");
+		});
+		$("#Ddelete").click(function()
+		{
+			if(confirm("Apakah data Tersebut mau di hapus?"))
+			{
+				$.ajax({
+					url:"<?php echo site_url("Cont_admin/DeleteDataDokter")?>",
+					type:"post",
+					datatype:"json",
+					data:{kode:selectedData},
+					success:function(result)
+					{
+						var table = $("#TableDokter").DataTable();
+						table.row('.selected').remove().draw( false );
+					}
+					
+				})
+			}
+		})
+		function createTableDokter(DataRow)
+		{
+			$("#TableDokter").DataTable(
+			{
+				data: DataRow,
+				columns:
+				[
+				{title:"Kode Dokter"},
+				{title:"Nama Dokter"},
+				{title:"Alamat Dokter"},
+				{title:"HP Dokter"},
+				{title:"Status Dokter"}
+				],
+				"Destroy":true
+			});
+		}
+		//******************************************************** MASTER BARANG *********************************************************//
+		
+		createTableBarang(<?php echo $rowBarang;?>);
+		$('#TableBarang tbody').on( 'click', 'tr', function () {
+			var table = $("#TableBarang").DataTable();
+			if ( $(this).hasClass('selected') ) {
+				$(this).removeClass('selected');
+				
+			}
+			else {
+				table.$('tr.selected').removeClass('selected');
+				$(this).addClass('selected');
+				selectedData=table.row(this).data()[0];
+			}
+			
+		} );
+		$("#Mbarang").click(function()
+		{
+			selectedData=null;
+			$("#MasterCustomer").slideUp("fast");
+			$("#MasterDokter").slideUp("fast");
+			$("#MasterBarang").slideDown("fast");
+			$("#Mbarang").addClass("active1");
+			$("#Mdokter").removeClass("active1");
+			$("#Mcust").removeClass("active1");
+		})
+		$("#Binsert").click(function()
+		{
+			$("#saveButtonBarang").val("Insert");
+			$("#myModalBarang").modal("show");
+		});
+		$("#Bupdate").click(function()
+		{
+			var data = $("#TableBarang").DataTable().row('.selected').data();
+			$("#kodeBarang").val(data[0]);$("#namaBarang").val(data[1]);
+			$("#hargaBarang").val(data[2]);$("#stokBarang").val(data[3]);$("#statusBarang").val(data[4]);
+			
+			$("#saveButtonBarang").val("Update");
+			$("#myModalBarang").modal("show");
+		});
+		$("#Bdelete").click(function()
+		{
+			if(confirm("Apakah data ini mau di hapus?"))
+			{
+				var data = $("#TableBarang").DataTable().row('.selected').data();
+				$.ajax({
+					url:"<?php echo site_url("Cont_admin/DeleteDataBarang")?>",
+					type:"post",
+					datatype:"json",
+					data:{kode_barang:data[0]},
+					success:function(result)
+					{
+						var table = $("#TableBarang").DataTable();
+						table.row('.selected').remove().draw( false )
+					}				
+				})
+			}
+		})
+		function createTableBarang(DataRow)
+		{
+			$("#TableBarang").DataTable({
+				data: DataRow,
+				columns:
+				[
+				{title:"kode Barang"},
+				{title:"Nama Barang"},
+				{title:"Harga Barang"},
+				{title:"Stok Barang"},
+				{title:"Status Barang"}
+				],
+				destroy:true
+			});
+		}
+		$("#saveButtonBarang").click(function()
+		{
+			if($(this).val() =="Insert")
+			{
+				$.ajax
+				({
+					url:"<?php echo site_url("Cont_admin/insertDataBarang")?>",
+					type:"post",
+					datatype:"json",
+					data:{kode_barang:$("#kodeDokter").val(),nama_barang:$("#namaDokter").val(),harga_barang:$("#alamatDokter").val(),stok_barang:$("#hpdokter").val(),status_barang:$("#statusdokter").val()},
+					success:function(result)
+					{
+						$("#TableBarang").DataTable().destroy();
+						createTableBarang(JSON.parse(result));
+						$("#myModal").modal("hide");
+					}
+				})
+			}
+			else if($(this).val() == "Update")
+			{		
+				$.ajax
+				({
+					url:"<?php echo site_url("Cont_admin/updateDataBarang")?>",
+					type:"post",
+					datatype:"json",
+					data:{kode_barang:$("#kodeDokter").val(),nama_barang:$("#namaDokter").val(),harga_barang:$("#alamatDokter").val(),stok_barang:$("#hpdokter").val(),status_barang:$("#statusdokter").val()},
+					success:function(result)
+					{
+						$("#TableBarang").DataTable().destroy();
+						createTableBarang(JSON.parse(result));
+						$("#myModal").modal("hide");
+					}
+				})
+			}
 		});
 	});
 </script>
@@ -245,8 +429,10 @@
 	<ul>
 		<li class="LIUL"><a href="<?php echo site_url("Cont_login/index")?>">Logout</a></li>
 		<li ><a>Hello Admin</a></li>
-		<li id="Mcust" style="float:right;"><a href="#">Master Customer</a></li>
+		
+		<li id="Mcust" style="float:right;font-size:10pt;"><a href="#">Master Customer</a></li>
 		<li id="Mdokter" style="float:right;"><a href="#">Master Dokter</a></li>
+		<li id="Mbarang" style="float:right;font-size:10pt;"><a href="#">Master Barang</a></li>
 	</ul>
 </div>
 <div id="MasterCustomer" style="display:none;">
@@ -271,15 +457,7 @@
 	<div id="contentInsert">
 		<div id="kiriInsert">
 			<ul id="ulInsertKiri" style="float:left;list-style:none;overflow:hidden;padding:0px;margin:0px;">
-				<li>Usename:</li>
-				<li>User Username</li>
-				<li>User Password</li>
-				<li>User Alamat</li>
-				<li>User Hp</li>
-				<li>User Email</li>
-				<li>User Type</li>
-				<li>Role ID</li>
-				<li>User Status</li>
+				<li>Usename:</li><li>User Username</li><li>User Password</li><li>User Alamat</li><li>User Hp</li><li>User Email</li><li>User Type</li><li>Role ID</li><li>User Status</li>
 			</ul>
 		</div>
 		
@@ -310,14 +488,25 @@
 		<div class="container-fluid">
 			<div class="row">
 				<button id="Dinsert" type="button" class="btn btn-primary" value="insert">Insert</button>
-				<button type="button" class="btn btn-primary" value="insert">Update</button>
-				<button type="button" class="btn btn-primary" value="insert">Delete</button>
+				<button id="Dupdate" type="button" class="btn btn-primary" value="insert">Update</button>
+				<button id="Ddelete"type="button" class="btn btn-primary" value="insert">Delete</button>
 			</div>
 		</div>
 	</div>
+</div>
 
-	<div id="Footer">
-
+<div id="MasterBarang" style="display:none;">
+	<div id="content" class="container-fluid">
+		<table id="TableBarang" class="display" cellspacing="0" width="100%">
+		
+		</table>
+		<div class="container-fluid">
+			<div class="row">
+				<button id="Binsert" type="button" class="btn btn-primary" value="insert">Insert</button>
+				<button id="Bupdate" type="button" class="btn btn-primary" value="insert">Update</button>
+				<button id="Bdelete"type="button" class="btn btn-primary" value="insert">Delete</button>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -329,46 +518,95 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Tambah Antrian</h4>
+        <h4 class="modal-title" id="myModalLabel">Tambah Dokter</h4>
       </div>
       <div class="modal-body">	
 		<div id="form1" >
 			<form role="form" class="form-horizontal">
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="usr">Kode Dokter</label>
+					<label id="labelKode" class="control-label col-sm-3" for="usr" >Kode Dokter</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" id="Nama">
+						<input type="text" class="form-control" id="kodeDokter" disabled=true>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3 " for="usr">Nama Dokter</label>
+					<label id="labelNama" class="control-label col-sm-3 " for="usr">Nama Dokter</label>
 					<div class="col-sm-7">
-						<input type="text" data-default="20:48" class="form-control clockpicker" id="datetimepicker4">
+						<input type="text" data-default="20:48" class="form-control clockpicker" id="namaDokter">
 					</div>
 				</div>
 				<div class="form-group ui-widget">
-					<label class="control-label col-sm-3" for="usr">Alamat Dokter</label>
+					<label  id="labelAlamat" class="control-label col-sm-3" for="usr">Alamat Dokter</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" id="Dokter">
+						<input type="text" class="form-control" id="alamatDokter">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="usr">Handphone Dokter</label>
+					<label id="labelKeterangan" class="control-label col-sm-3" for="usr">Handphone Dokter</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" id="Nama">
+						<input type="text" class="form-control" id="hpdokter">
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="usr">Status Dokter</label>
+					<label id="labelStatus" class="control-label col-sm-3" for="usr">Status Dokter</label>
 					<div class="col-sm-7">
-						<input type="text" class="form-control" id="Nama">
+						<input type="text" class="form-control" id="statusdokter">
 					</div>
 				</div>
 			</form>
 		</div>
       </div>
       <div class="modal-footer">
-        <button type="button" id="saveButton" class="btn btn-primary">Save changes</button>
+        <button type="button" id="saveButton" class="btn btn-primary" value="Insert">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="myModalBarang" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display:none">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Tambah Barang</h4>
+      </div>
+      <div class="modal-body">	
+		<div id="form1" >
+			<form role="form" class="form-horizontal">
+				<div class="form-group">
+					<label  class="control-label col-sm-3" for="usr" >Kode Barang</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="kodeBarang">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3 " for="usr">Nama Barang</label>
+					<div class="col-sm-7">
+						<input type="text" data-default="20:48" class="form-control clockpicker" id="namaBarang">
+					</div>
+				</div>
+				<div class="form-group ui-widget">
+					<label  class="control-label col-sm-3" for="usr">Harga Barang</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="hargaBarang">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="usr">Stok hara</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="stokBarang">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="usr">Status Barang</label>
+					<div class="col-sm-7">
+						<input type="text" class="form-control" id="statusBarang">
+					</div>
+				</div>
+			</form>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="saveButtonBarang" class="btn btn-primary" value="Insert">Save changes</button>
       </div>
     </div>
   </div>
