@@ -14,7 +14,7 @@ class Cont_resepsionis extends CI_Controller
 	{
 		$data["dokter"] = $this->Model_basic->getData("dokter",null);
 		$data["dokter"] = json_encode($data["dokter"]);
-		$this->load->view("Persons/View_resepsionis",$data);
+		$this->load->view("Persons/Resepsionis/View_resepsionis",$data);
 	}
 	public function tambahAntrian()
 	{

@@ -20,7 +20,7 @@
 
 <div class="container-fluid">
 <ul class="nav nav-pills nav-justified">
-	<li><a href="<?php echo site_url("Admin/Cont_laporan/index");?>">Penanganan</a></li>
+	<li><a href="<?php echo site_url("Admin/Cont_laporan/index");?>"><img src="<?php echo base_url("Assets/img/icon1.png")?>" width="25px" height="25px"></img>Penanganan</a></li>
 	<li class="dropdown">
 	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >Stok<span class="caret"></span></a>
 	<ul class="dropdown-menu"> 

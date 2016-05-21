@@ -43,6 +43,13 @@
 			});
 			$("#myModal").modal("hide");
 		})
+		$("#showmodalpenjualan").click(function()
+		{
+			var rightNow = new Date();
+			var res = rightNow.toISOString().slice(0,10).replace(/-/g,"/");
+			$("#TanggalPenjualan").val(res);
+			$("#modalPenjualan").modal("show");
+		})
 		function prosesListDokter(inputan)
 		{
 			$.each(inputan,function(index,value)
@@ -65,6 +72,9 @@
 	})
 	
   </script>
+  <style>
+  .ui-autocomplete { z-index:2147483647;}
+  </style>
   <title> Aplikasi Dokter Gigi</title>
 </head>
 
@@ -157,12 +167,66 @@
 		</div>
 		<div id="menu2" class="tab-pane fade">
 			<div class="row">
-				<div class="col-sm-10">
+				<div class="col-sm-9">
 				</div>
-				<div class="col-sm-2">
-					<h4>TOTAL: Rp.0,00</h4>
+				<div class="col-sm-3">
+					<h2>TOTAL: Rp.0,00</h2>
 				</div>
 			</div>
+
+			<div class="container-fluid">
+			<button class="btn-primary btn-lg" id="showmodalpenjualan">Tambah Barang</button>
+			<br>
+				<table class="table table-bordered table-striped">
+			  <thead>
+				<tr>
+				  <th class="col-sm-2">No Barang</th>
+				  <th class="col-sm-4">Nama Barang</th>
+				  <th class="col-sm-2">Harga</th>
+				  <th class="col-sm-2">Jumlah</th>
+				  <th class="col-sm-2">Total</th>
+				  <th class="col-sm-1">&nbsp </th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <td>1</td>
+				  <td>A</td>
+				  <td>150000</td>
+				  <td>2</td>
+				  <td>300000</td>
+				  <td><button>Cancel</button></td>
+				</tr>
+			  </tbody>
+			  <tbody>
+				<tr>
+				  <td>2</td>
+				  <td>AB</td>
+				  <td>100000</td>
+				  <td>3</td>
+				  <td>300000 </td>
+				  <td><button>Cancel</button></td>
+				</tr>
+			  </tbody>
+			  <tbody>
+				<tr>
+				  <td>3</td>
+				  <td>ABC</td>
+				  <td>75000</td>
+				  <td>3</td>
+				  <td>225000 </td>
+				  <td><button>Cancel</button></td>
+				</tr>
+			  </tbody>
+			</table>
+			</div>
+			
+			<div class="container-fluid">
+				<div class="col-sm-11">
+				</div>
+				<button class="col-sm-1 btn-md btn-primary"> Submit </button>
+			</div>
+			
 		</div>
 		<div id="menu3" class="tab-pane fade">
 		  <h3>Jadwal Dokter</h3>
@@ -177,7 +241,6 @@
 </div>
 
 </body>
-
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -215,7 +278,70 @@
       </div>
     </div>
   </div>
-  
 </div>
 <input type="hidden" id="idDokter" value="">
+
+<div class="modal fade" id="modalPenjualan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Tambah Barang</h4>
+      </div>
+      <div class="modal-body">	
+		<div id="form1" >
+			<form role="form" class="form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="usr">No Nota</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="noTransaksi">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="usr">Tanggal</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="TanggalPenjualan">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3 " for="usr">Nama Customer</label>
+					<div class="col-sm-6">
+						<input type="text" data-default="20:48" class="form-control clockpicker" id="datetimepicker4">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="usr">Nama Barang</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="NamaBarang">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="usr">Kode Barang</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="kodeBarang">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="usr">Harga Barang</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="hargaBarang">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="usr">jumlah Barang</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="jumlahBarang">
+					</div>
+				</div>
+				
+			</form>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="saveButton" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <html>
