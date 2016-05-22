@@ -91,7 +91,7 @@
 <div class="container-fluid">
   <ul class="nav nav-pills nav-justified">
     <li class="active dropdown">
-	<a class="dropdown-toggle"   data-toggle="dropdown" href="#" style="font-size:14pt;" ><img width="55" height="55" src="<?php echo base_url("Assets/img/icon1.png")?>">Jadwal Antrian <span class="caret"></span>
+	<a class="dropdown-toggle"   data-toggle="dropdown" href="#" style="font-size:14pt;" ><span class="glyphicon glyphicon-list-alt"></span>Jadwal Antrian <span class="caret"></span>
 	</a>
 	<ul class="dropdown-menu">
       <li><a data-toggle="pill" href="#menu1">index</a></li>
@@ -102,7 +102,7 @@
   
 	
 	<li><a data-toggle="pill" style="font-size:14pt;" href="#menu3"><img width="55" height="55" src="<?php echo base_url("Assets/img/icon1.png")?>">Jadwal Dokter</a></li>
-    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu2"><img width="55" height="55" src="<?php echo base_url("Assets/img/icon1.png")?>">Penjualan</a></li>
+    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu2"><span class="glyphicon glyphicon-tag"></span>Penjualan</a></li>
     <li><a data-toggle="pill" style="font-size:14pt;" href="#menu4"><img width="55" height="55" src="<?php echo base_url("Assets/img/icon1.png")?>">Pembayaran</a></li>
     <li><a data-toggle="pill" style="font-size:14pt;" href="#menu5"><img width="55" height="55" src="<?php echo base_url("Assets/img/icon1.png")?>">Penerimaan Barang</a></li>
   </ul>
@@ -173,9 +173,49 @@
 					<h2>TOTAL: Rp.0,00</h2>
 				</div>
 			</div>
-
+			
+			
 			<div class="container-fluid">
-			<button class="btn-primary btn-lg" id="showmodalpenjualan">Tambah Barang</button>
+				<div class="form-group">
+					<label class="control-label col-sm-2">No Transaksi:</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="noTrans" placeholder="nomor transaksi" />
+					</div>
+					<label class="control-label col-sm-2">Tanggal transaksi</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="tanggalTrans" placeholder="Tanggal transaksi" />
+					</div>
+					<br><br>
+					<label class="control-label col-sm-2">Nama Customer</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="NamaCustomer" placeholder="Nama Pelanggan" />
+					</div>
+					<label class="control-label col-sm-2">Nama Barang</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="TanggalPenjualan" placeholder="Nama Barang" />
+					</div>
+					<br><br>
+					<label class="control-label col-sm-2">Kode Barang</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="kodeBarang" placeholder="Kode Barang" />
+					</div>
+					<label class="control-label col-sm-2">Harga Barang</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="hargaBarang" placeholder="Harga Barang" />
+					</div>
+					<label class="control-label col-sm-2">Jumlah Barang</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="jumlahBarang" placeholder="Jumlah Barang" />
+					</div>
+					<br><br>
+					<div class="col-sm-4" ></div>
+					<div class="col-sm-3">
+						<input type="button" value="InsertData" class="form-control" id="insertDataButton" />
+					</div>
+					<br>
+				</div>
+				
+				
 			<br>
 				<table class="table table-bordered table-striped">
 			  <thead>
@@ -280,68 +320,5 @@
   </div>
 </div>
 <input type="hidden" id="idDokter" value="">
-
-<div class="modal fade" id="modalPenjualan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Tambah Barang</h4>
-      </div>
-      <div class="modal-body">	
-		<div id="form1" >
-			<form role="form" class="form-horizontal">
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="usr">No Nota</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="noTransaksi">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="usr">Tanggal</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="TanggalPenjualan">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-3 " for="usr">Nama Customer</label>
-					<div class="col-sm-6">
-						<input type="text" data-default="20:48" class="form-control clockpicker" id="datetimepicker4">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="usr">Nama Barang</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="NamaBarang">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="usr">Kode Barang</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="kodeBarang">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="usr">Harga Barang</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="hargaBarang">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-3" for="usr">jumlah Barang</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="jumlahBarang">
-					</div>
-				</div>
-				
-			</form>
-		</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="saveButton" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <html>
