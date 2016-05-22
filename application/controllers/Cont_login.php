@@ -12,8 +12,19 @@ class Cont_login extends CI_Controller
 	{
 		$this->load->view("View_login");
 	}
-	public function submitReq()
+	public function authenticate()
 	{
+    //Production Stage, delete after implementation
+    if ($this->input->post("username") == "admin") {
+      redirect("Cont_admin/index");
+    }
+    if ($this->input->post("username") == "dokter") {
+      redirect("Cont_dokter/index");
+    }
+    if ($this->input->post("username") == "kasir") {
+      redirect("Cont_resepsionis/index");
+    }
+
 		$conditions = Array("user_username"=> $this->input->post("username") ,"user_password"=> $this->input->post("password"));
 		
 		$temp = $this->Model_basic->getData("user",$conditions);
