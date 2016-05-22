@@ -21,10 +21,10 @@
 <div class="container-fluid">
 <ul class="nav nav-pills nav-justified">
 
-	<li><a href="<?php echo site_url("Admin/Cont_laporan/index");?>">Penanganan</a></li>
+	<li><a href="<?php echo site_url("Admin/Cont_laporan/index");?>"><span class="glyphicon glyphicon-phone-alt" style="font-size:35px;"></span>Penanganan</a></li>
 
 	<li class="dropdown active">
-	<a class="dropdown-toggle" data-toggle="dropdown" href="#" >Stok<span class="caret"></span></a>
+	<a class="dropdown-toggle" data-toggle="dropdown" href="#" ><span class="glyphicon glyphicon-bed" style="font-size:35px;"></span>Stok<span class="caret"></span></a>
 	<ul class="dropdown-menu"> 
 		<li class="<?php echo $active1;?>"><a href="#menu1" data-toggle="pill" >Kartu Stok</a></li>
 		<li class="<?php echo $active2;?>"><a href="#menu2" data-toggle="pill" >Pemakaian</a></li>
@@ -35,7 +35,7 @@
 	
 	</li>
 	<li class="dropdown">
-	<a class="dropdown-toggle" data-toggle="dropdown" href="#">Asset<span class="caret"></span></a>
+	<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-briefcase" style="font-size:35px;"></span>Asset<span class="caret"></span></a>
 	<ul class="dropdown-menu">
 		<li><a href="<?php echo site_url("Admin/Cont_laporan/asset/daftarAsset")?>">Daftar Asset</a></li>
 		<li><a href="<?php echo site_url("Admin/Cont_laporan/asset/pembelianAsset")?>">Pembelian Asset</a></li>
@@ -44,7 +44,7 @@
 	</li>
 	
 	<li class="dropdown">
-	<a class="dropdown-toggle" data-toggle="dropdown"  href="#">Kas dan Bank<span class="caret"></span></a>
+	<a class="dropdown-toggle" data-toggle="dropdown"  href="#"><span class="glyphicon glyphicon-piggy-bank" style="font-size:35px;"></span>Kas dan Bank<span class="caret"></span></a>
 	<ul class="dropdown-menu">
 		<li ><a href="<?php echo site_url("Admin/Cont_laporan/kasDanBank/kasPeriodik")?>">Kas Periodik</a></li>
 		<li ><a href="<?php echo site_url("Admin/Cont_laporan/kasDanBank/giro")?>">Giro</a></li>
@@ -54,7 +54,7 @@
 	</li>
 	
 	<li class="dropdown">
-	<a class="dropdown-toogle" data-toggle="dropdown"  href="#">Pendapatan / Piutang <span class="caret"></span></a>
+	<a class="dropdown-toogle" data-toggle="dropdown"  href="#"><span class="glyphicon glyphicon-credit-card" style="font-size:35px;"></span>Pendapatan / Piutang <span class="caret"></span></a>
 	<ul class="dropdown-menu">
 		<li><a href="<?php echo site_url("Admin/Cont_laporan/pendapatanPiutang/pendapatan")?>">Pendapatan</a></li>
 		<li><a href="<?php echo site_url("Admin/Cont_laporan/pendapatanPiutang/piutang")?>">Piutang</a></li>
@@ -64,7 +64,7 @@
 	</ul>
 	</li>
 	<li class="dropdown">
-	<a class="dropdown-toggle" data-toggle="dropdown"  href="#">Pembelian / Hutang<span class="caret"></span></a>
+	<a class="dropdown-toggle" data-toggle="dropdown"  href="#"><span class="glyphicon glyphicon-shopping-cart" style="font-size:35px;"></span>Pembelian / Hutang<span class="caret"></span></a>
 	<ul class="dropdown-menu">
 		<li><a href="<?php echo site_url("Admin/Cont_laporan/pembelianHutang/pembelian")?>">Pembelian</a></li>
 		<li><a href="<?php echo site_url("Admin/Cont_laporan/pembelianHutang/penyesuaian")?>">Penyesuaian</a></li>
@@ -73,7 +73,7 @@
 	</ul>
 	</li>
 	<li class="dropdown">
-	<a class="dropdown-toggle" data-toggle="dropdown"  href="#">General Ledger <span class="caret"></span></a>
+	<a class="dropdown-toggle" data-toggle="dropdown"  href="#"><span class="glyphicon glyphicon-yen" style="font-size:35px;"></span>General Ledger <span class="caret"></span></a>
 	<ul class="dropdown-menu">
 		<li><a href="<?php echo site_url("Admin/Cont_laporan/generalLedger/labaRugi")?>">Laba Rugi</a></li>
 		<li><a href="<?php echo site_url("Admin/Cont_laporan/generalLedger/neracaSaldo")?>">Neraca Saldo</a></li>

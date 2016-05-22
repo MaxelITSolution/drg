@@ -91,7 +91,7 @@
 <div class="container-fluid">
   <ul class="nav nav-pills nav-justified">
     <li class="active dropdown">
-	<a class="dropdown-toggle"   data-toggle="dropdown" href="#" style="font-size:14pt;" ><span class="glyphicon glyphicon-list-alt"></span>Jadwal Antrian <span class="caret"></span>
+	<a class="dropdown-toggle"   data-toggle="dropdown" href="#" style="font-size:14pt;" ><span style="font-size:35px" class="glyphicon glyphicon-calendar"></span>Jadwal Antrian <span class="caret"></span>
 	</a>
 	<ul class="dropdown-menu">
       <li><a data-toggle="pill" href="#menu1">index</a></li>
@@ -101,10 +101,10 @@
 	</li>
   
 	
-	<li><a data-toggle="pill" style="font-size:14pt;" href="#menu3"><img width="55" height="55" src="<?php echo base_url("Assets/img/icon1.png")?>">Jadwal Dokter</a></li>
-    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu2"><span class="glyphicon glyphicon-tag"></span>Penjualan</a></li>
-    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu4"><img width="55" height="55" src="<?php echo base_url("Assets/img/icon1.png")?>">Pembayaran</a></li>
-    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu5"><img width="55" height="55" src="<?php echo base_url("Assets/img/icon1.png")?>">Penerimaan Barang</a></li>
+	<li><a data-toggle="pill" style="font-size:14pt;" href="#menu3"><span style="font-size:35px" class="glyphicon glyphicon-calendar"></span>Jadwal Dokter</a></li>
+    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu2"><span style="font-size:35px" class="glyphicon glyphicon-shopping-cart"></span>Penjualan</a></li>
+    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu4"><span style="font-size:35px" class="glyphicon glyphicon-credit-card"></span>Pembayaran</a></li>
+    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu5"><span style="font-size:35px" class="glyphicon glyphicon-duplicate"></span>Penerimaan Barang</a></li>
   </ul>
 </div>
 <!-- Ini pilihan untuk ngubah tanggal. Default tanggal hari ini. Tabel di bawah menampilkan data antrian pada tanggal yg disini -->

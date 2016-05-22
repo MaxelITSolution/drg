@@ -1,4 +1,4 @@
-<html lang="en">
+
 <head>
  <meta charset="utf-8">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/css/login.css")?>" />
@@ -23,6 +23,7 @@
 	.centered-pills a { float:left; }
 	* html .centered-pills ul.nav-pills { display:inline; } /* IE6 */
 	*+html .centered-pills ul.nav-pills { display:inline; } /* IE7 */
+	
   </style>
  
   <Script>

@@ -430,12 +430,12 @@
 		<li class="LIUL"><a href="<?php echo site_url("Cont_login/index")?>">Logout</a></li>
 		<li ><a>Hello Admin</a></li>
 		
-		<li id="Mcust" style="float:right;font-size:10pt;"><a href="#">Master Customer</a></li>
-		<li id="Mdokter" style="float:right;"><a href="#">Master Dokter</a></li>
-		<li id="Mbarang" style="float:right;font-size:10pt;"><a href="#">Master Barang</a></li>
-		<li id="Mbarang" style="float:right;font-size:10pt;"><a href="#">Transaksi</a></li>
-		<li id="Mbarang" style="float:right;font-size:10pt;"><a href="#">Accounting</a></li>
-		<li id="Mbarang" style="float:right;font-size:10pt;"><a href="#">Laporan</a></li>
+		<li id="Mcust" style="float:right;font-size:10pt;"><a href="#"><span style="font-size:25px;" class="glyphicon glyphicon-user"></span>Master Customer</a></li>
+		<li id="Mdokter" style="float:right;"><a href="#"><span style="font-size:25px;" class="glyphicon glyphicon-user"></span>Master Dokter</a></li>
+		<li id="Mbarang" style="float:right;font-size:10pt;"><a href="#"><span style="font-size:25px;" class="glyphicon glyphicon-oil"></span>Master Barang</a></li>
+		<li id="Mbarang" style="float:right;font-size:10pt;"><a href="#"><span style="font-size:25px;" class="glyphicon glyphicon-tag"></span>Transaksi</a></li>
+		<li id="Mbarang" style="float:right;font-size:10pt;"><a href="#"><span style="font-size:25px;" class="glyphicon glyphicon-pencil"></span>Accounting</a></li> 
+		<li id="Mbarang" style="float:right;font-size:10pt;"><a href="<?php echo site_url("Admin/Cont_laporan")?>"><span style="font-size:25px;" class="glyphicon glyphicon-list-alt"></span>Laporan</a></li>
 	</ul>
 </div>
 <div id="MasterCustomer" style="display:none;">
