@@ -1,0 +1,32 @@
+:root {
+  --color_header: #5f120c;
+  
+  --color2: #be1e2d;
+  
+  --color_button: #a3080c;
+  --color_button_hover: #ff0000;
+  
+  --color_bg : #f3f3f3;
+}
+
+body {
+  font-family: Arial;
+  font-size: 14pt;
+  background: url("../img/pink_rice.png");
+}
+input {
+  font-size: 14pt;
+  padding: 5px 10px;
+}
+button.btn_1 {
+  background-color: var(--color_button);
+  color: white; 
+  font-size: 14pt;
+  width: 100px;
+  padding: 5px;
+  border-collapse: collapse;
+}
+button.btn_1:hover {
+  background-color: var(--color_button_hover);
+  cursor: pointer;
+}

@@ -1,0 +1,15 @@
+#login_title {
+  color: white;
+  background-color: var(--color_header);
+  font-size: 20pt;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
+table#login_table {
+  font-family: Arial;
+  font-size: 14pt;
+  margin: auto;
+  border: 1px solid gray;
+  width: 100%;
+}

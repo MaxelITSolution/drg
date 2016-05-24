@@ -1,6 +1,8 @@
 <html lang="en">
 <head>
  <meta charset="utf-8">
+  <?php loadAsset("css/style_basic.css"); ?>
+  <?php loadAsset("css/style_drg.css"); ?>
    <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/css/login.css")?>" />
    <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/css/datepicker.css")?>" />
    <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/bootstrap/css/bootstrap.min.css")?>"/>
@@ -63,7 +65,6 @@
 			source:listDokter,
 			select: function(a,b)
 			{
-				
 				$("#idDokter").val(b.item.idx);
 			}
 		});
@@ -80,33 +81,51 @@
 
 <body>
 <!-- ini header, pakai <header> saja-->
-<div class="Header">
+<header>
 	<ul>
 		<li id="headerKanan"><a href="<?php echo site_url("Cont_login/index");?>">Logout</a></li>
 		<li id="headerKanan"><a>Hello</a></li>
 	</ul>
-</div>
+</header>
 
 <!-- ini menu2, lokasi di bawah header, ukuran dibuat agak besar (height), soalnya nanti pemakaiannya di layar touch screen, kasi gambar kalau perlu-->
-<div class="container-fluid">
+<nav class="container-fluid">
   <ul class="nav nav-pills nav-justified">
     <li class="active dropdown">
-	<a class="dropdown-toggle"   data-toggle="dropdown" href="#" style="font-size:14pt;" ><span style="font-size:35px" class="glyphicon glyphicon-calendar"></span>Jadwal Antrian <span class="caret"></span>
-	</a>
-	<ul class="dropdown-menu">
-      <li><a data-toggle="pill" href="#menu1">index</a></li>
-      <li><a data-toggle="pill" href="#">Reminder</a></li>
-      <li><a data-toggle="pill" href="#">Follow Up</a></li> 
-    </ul>
-	</li>
+	    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-size:14pt;" >
+        <span style="font-size:20px" class="glyphicon glyphicon-calendar"></span> Jadwal Antrian 
+        <span class="caret"></span>
+	    </a>
+	    <ul class="dropdown-menu">
+        <li><a data-toggle="pill" href="#menu1">Daftar</a></li>
+        <li><a data-toggle="pill" href="#">Reminder</a></li>
+        <li><a data-toggle="pill" href="#">Follow Up</a></li> 
+      </ul>
+	  </li>
   
 	
-	<li><a data-toggle="pill" style="font-size:14pt;" href="#menu3"><span style="font-size:35px" class="glyphicon glyphicon-calendar"></span>Jadwal Dokter</a></li>
-    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu2"><span style="font-size:35px" class="glyphicon glyphicon-shopping-cart"></span>Penjualan</a></li>
-    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu4"><span style="font-size:35px" class="glyphicon glyphicon-credit-card"></span>Pembayaran</a></li>
-    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu5"><span style="font-size:35px" class="glyphicon glyphicon-duplicate"></span>Penerimaan Barang</a></li>
+	  <li>
+      <a data-toggle="pill" style="font-size:14pt;" href="#menu3">
+        <span style="font-size:20px" class="glyphicon glyphicon-calendar"></span> Jadwal Dokter
+      </a>
+    </li>
+    <li>
+      <a data-toggle="pill" style="font-size:14pt;" href="#menu2">
+        <span style="font-size:20px" class="glyphicon glyphicon-shopping-cart"></span> Penjualan
+      </a>
+    </li>
+    <li>
+      <a data-toggle="pill" style="font-size:14pt;" href="#menu4">
+        <span style="font-size:20px" class="glyphicon glyphicon-credit-card"></span> Pembayaran
+      </a>
+    </li>
+    <li>
+      <a data-toggle="pill" style="font-size:14pt;" href="#menu5">
+        <span style="font-size:20px" class="glyphicon glyphicon-duplicate"></span> Penerimaan Barang
+      </a>
+    </li>
   </ul>
-</div>
+</nav>
 <!-- Ini pilihan untuk ngubah tanggal. Default tanggal hari ini. Tabel di bawah menampilkan data antrian pada tanggal yg disini -->
 <br><br>
 <div>
@@ -116,7 +135,7 @@
 		<div id="menu1" class="tab-pane fade in active">
 		  <div class="table-responsive container-fluid">
 			<div style="text-align: center;">
-			Tanggal antrian: <input id="tanggal" type="date">
+			Tanggal antrian: <input id="tanggal" type="date" value="<?php echo date("Y-m-d")?>">
 			</div>
 
 			<br><br>
@@ -125,11 +144,11 @@
 			</div>
 			<br><br>
 
-			<table class="table table-bordered table-striped">
-			  <thead>
+			<table class="table table-striped table-bordered">
+			  <thead style="background-color: lightgray;">
 				<tr>
-				  <th>No</th>
-				  <th>Nama</th>
+				  <th width="20px">No</th>
+				  <th>Nama Pasien</th>
 				  <th>Jam</th>
 				  <th>Dokter</th>
 				  <th class="col-sm-1">&nbsp;</th>
@@ -143,8 +162,6 @@
 				  <td>Dr. Antok</td>
 				  <td><button>Cancel</button></td>
 				</tr>
-			  </tbody>
-			  <tbody>
 				<tr>
 				  <td>2</td>
 				  <td>Andi Wijaya</td>
@@ -152,8 +169,6 @@
 				  <td>Dr. Antok</td>
 				  <td><button>Cancel</button></td>
 				</tr>
-			  </tbody>
-			  <tbody>
 				<tr>
 				  <td>3</td>
 				  <td>Andi Wijaya</td>
@@ -183,7 +198,7 @@
 					</div>
 					<label class="control-label col-sm-2">Tanggal transaksi</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" id="tanggalTrans" placeholder="Tanggal transaksi" />
+						<input type="date" class="form-control" id="tanggalTrans" placeholder="Tanggal transaksi" value="<?php echo date("Y-m-d")?>" />
 					</div>
 					<br><br>
 					<label class="control-label col-sm-2">Nama Customer</label>

@@ -1,0 +1,11 @@
+header {
+  background-color: var(--color_header);
+}
+
+nav {
+  background-color: var(--color_bg);
+}
+
+nav li.active {
+  background-color: transparent;
+}

@@ -1,4 +1,3 @@
-
 <head>
  <meta charset="utf-8">
    <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/css/login.css")?>" />
@@ -82,12 +81,13 @@
 
 <body>
 <!-- ini header, pakai <header> saja-->
-<div class="Header">
+
+<header>
 	<ul>
 		<li id="headerKanan"><a href="<?php echo site_url("Cont_login/index");?>">Logout</a></li>
 		<li id="headerKanan"><a>Hello</a></li>
 	</ul>
-</div>
+</header>
 
 <!-- ini menu2, lokasi di bawah header, ukuran dibuat agak besar (height), soalnya nanti pemakaiannya di layar touch screen, kasi gambar kalau perlu-->
 <div class="container-fluid centered-pills">
