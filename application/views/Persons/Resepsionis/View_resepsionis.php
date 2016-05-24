@@ -3,19 +3,19 @@
  <meta charset="utf-8">
   <?php loadAsset("css/style_basic.css"); ?>
   <?php loadAsset("css/style_drg.css"); ?>
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/css/login.css")?>" />
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/css/datepicker.css")?>" />
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/bootstrap/css/bootstrap.min.css")?>"/>
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/bootstrap/css/clockpicker.css")?>"/>
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/login.css")?>" />
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/datepicker.css")?>" />
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/bootstrap/css/bootstrap.min.css")?>"/>
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/bootstrap/css/clockpicker.css")?>"/>
    
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/css/jquery-ui.min.css")?>" />
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/jquery-ui.min.css")?>" />
   
-   <script src="<?php echo base_url("Assets/js/jquery-2.2.3.min.js")?>"></script>
+   <script src="<?php echo base_url("assets/js/jquery-2.2.3.min.js")?>"></script>
    
-   <script src="<?php echo base_url("Assets/js/jquery-ui.min.js")?>"></script>
+   <script src="<?php echo base_url("assets/js/jquery-ui.min.js")?>"></script>
    
-   <script src="<?php echo base_url("Assets/bootstrap/js/bootstrap.min.js"); ?>"></script>
-   <script src="<?php echo base_url("Assets/bootstrap/js/clockpicker.js"); ?>"></script> 
+   <script src="<?php echo base_url("assets/bootstrap/js/bootstrap.min.js"); ?>"></script>
+   <script src="<?php echo base_url("assets/bootstrap/js/clockpicker.js"); ?>"></script> 
   <Script>
 	$(document).ready(function()
 	{

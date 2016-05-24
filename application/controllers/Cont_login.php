@@ -10,7 +10,7 @@ class Cont_login extends CI_Controller
 	}
 	public function index()
 	{
-		$this->load->view("View_login");
+		$this->load->view("view_login");
 	}
 	public function authenticate()
 	{
@@ -22,7 +22,7 @@ class Cont_login extends CI_Controller
       redirect("Cont_dokter/index");
     }
     if ($this->input->post("username") == "kasir") {
-      redirect("Cont_resepsionis/index");
+      redirect("resepsionis");
     }
 
 		$conditions = Array("user_username"=> $this->input->post("username") ,"user_password"=> $this->input->post("password"));

@@ -1,18 +1,18 @@
 <head>
  <meta charset="utf-8">
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/css/login.css")?>" />
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/css/datepicker.css")?>" />
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/bootstrap/css/bootstrap.min.css")?>"/>
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/bootstrap/css/clockpicker.css")?>"/>
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/login.css")?>" />
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/datepicker.css")?>" />
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/bootstrap/css/bootstrap.min.css")?>"/>
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/bootstrap/css/clockpicker.css")?>"/>
    
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("Assets/css/jquery-ui.min.css")?>" />
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/jquery-ui.min.css")?>" />
   
-   <script src="<?php echo base_url("Assets/js/jquery-2.2.3.min.js")?>"></script>
+   <script src="<?php echo base_url("assets/js/jquery-2.2.3.min.js")?>"></script>
    
-   <script src="<?php echo base_url("Assets/js/jquery-ui.min.js")?>"></script>
+   <script src="<?php echo base_url("assets/js/jquery-ui.min.js")?>"></script>
    
-   <script src="<?php echo base_url("Assets/bootstrap/js/bootstrap.min.js"); ?>"></script>
-   <script src="<?php echo base_url("Assets/bootstrap/js/clockpicker.js"); ?>"></script>
+   <script src="<?php echo base_url("assets/bootstrap/js/bootstrap.min.js"); ?>"></script>
+   <script src="<?php echo base_url("assets/bootstrap/js/clockpicker.js"); ?>"></script>
 
   <style>
 	.ui-autocomplete { z-index:2147483647; }
@@ -41,6 +41,7 @@
 			$("#myModal").modal("show");
 		})
 		
+    
 		$("#saveButton").click(function()
 		{
 			$.ajax({
@@ -92,10 +93,10 @@
 <!-- ini menu2, lokasi di bawah header, ukuran dibuat agak besar (height), soalnya nanti pemakaiannya di layar touch screen, kasi gambar kalau perlu-->
 <div class="container-fluid centered-pills">
   <ul class="nav nav-pills">
-    <li class="active"> <a data-toggle="pill" style="font-size:14pt;"href="#menu1"><img width="55" height="55" src="<?php echo base_url("Assets/img/icon1.png")?>">Antrian</a></li>
-    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu2"><img width="55" height="55" src="<?php echo base_url("Assets/img/icon1.png")?>">Penjualan</a></li>
-    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu3"><img width="55" height="55" src="<?php echo base_url("Assets/img/icon1.png")?>">Pembayaran</a></li>
-    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu4"><img width="55" height="55" src="<?php echo base_url("Assets/img/icon1.png")?>">Menu 4</a></li>
+    <li class="active"> <a data-toggle="pill" style="font-size:14pt;"href="#menu1"><img width="55" height="55" src="<?php echo base_url("assets/img/icon1.png")?>">Antrian</a></li>
+    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu2"><img width="55" height="55" src="<?php echo base_url("assets/img/icon1.png")?>">Penjualan</a></li>
+    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu3"><img width="55" height="55" src="<?php echo base_url("assets/img/icon1.png")?>">Pembayaran</a></li>
+    <li><a data-toggle="pill" style="font-size:14pt;" href="#menu4"><img width="55" height="55" src="<?php echo base_url("assets/img/icon1.png")?>">Menu 4</a></li>
   </ul>
 </div>
 <!-- Ini pilihan untuk ngubah tanggal. Default tanggal hari ini. Tabel di bawah menampilkan data antrian pada tanggal yg disini -->

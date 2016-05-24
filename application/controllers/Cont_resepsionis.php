@@ -7,8 +7,6 @@ class Cont_resepsionis extends CI_Controller
 		
 		parent::__construct();
 		$this->load->model("Model_basic");
-		$this->load->helper("form");
-		$this->load->helper("url");
 		header("Access-Control-Expose-Headers: Access-Control-Allow-Origin");
 		header('Access-Control-Allow-Origin: *');
 	}
@@ -16,7 +14,7 @@ class Cont_resepsionis extends CI_Controller
 	{
 		$data["dokter"] = $this->Model_basic->getData("dokter",null);
 		$data["dokter"] = json_encode($data["dokter"]);
-		$this->load->view("Persons/Resepsionis/View_resepsionis",$data);
+		$this->load->view("persons/resepsionis/view_resepsionis",$data);
 	}
 	public function tambahAntrian()
 	{

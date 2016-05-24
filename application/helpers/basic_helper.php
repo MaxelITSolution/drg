@@ -3,6 +3,6 @@
 if ( ! function_exists('loadAsset'))
 {
   function loadAsset($fn) {
-    echo "<link rel='stylesheet' type='text/css' href=" . base_url("Assets/".$fn) . " />";
+    echo "<link rel='stylesheet' type='text/css' href=" . base_url("assets/".$fn) . " />";
   }
 }
