@@ -97,7 +97,7 @@
         <span class="caret"></span>
 	    </a>
 	    <ul class="dropdown-menu">
-        <li><a data-toggle="pill" href="#menu1">Jadwal Pasien</a></li>
+        <li class="active"><a data-toggle="pill" href="#menu1">Jadwal Pasien</a></li>
         <li><a data-toggle="pill" href="#menu2">Reminder Pasien</a></li>
         <li><a data-toggle="pill" href="#menu3">Follow Up Pasien</a></li> 
         <li><a data-toggle="pill" href="#menu4">Jadwal Dokter</a></li> 
@@ -110,25 +110,25 @@
         <span class="caret"></span>
       </a>
       <ul class="dropdown-menu">
-        <li><a href="<?php echo site_url("Cont_resepsionis/informasi/dataPasien")?>">Data Pasien</a></li>
-        <li><a href="<?php echo site_url("Cont_resepsionis/informasi/daftarHarga")?>">Daftar Harga</a></li>
+        <li><a href="<?php echo site_url("Resepsionis/Cont_informasi/index/dataPasien")?>">Data Pasien</a></li>
+        <li><a href="<?php echo site_url("Resepsionis/Cont_informasi/index/daftarHarga")?>">Daftar Harga</a></li>
       </ul>
     </li>    
   	
-    <li>
-      <a  style="font-size:14pt;" href="<?php echo site_url("Cont_resepsionis/penjualan")?>">
+     <li>
+      <a  style="font-size:14pt;" href="<?php echo site_url("Resepsionis/Cont_penjualan")?>">
         <span style="font-size:20px" class="glyphicon glyphicon-shopping-cart"></span> Penjualan
       </a>
     </li>
 
     <li>
-      <a  style="font-size:14pt;" href="<?php echo site_url("Cont_resepsionis/pembayaran");?>">
+      <a  style="font-size:14pt;" href="<?php echo site_url("Resepsionis/Cont_pembayaran");?>">
         <span style="font-size:20px" class="glyphicon glyphicon-credit-card"></span> Pembayaran
       </a>
     </li>
 
     <li>
-      <a  style="font-size:14pt;" href="<?php echo site_url("Cont_resepsionis/penerimaanBarang")?>">
+      <a  style="font-size:14pt;" href="<?php echo site_url("Resepsionis/Cont_penerimaanBarang")?>">
         <span style="font-size:20px" class="glyphicon glyphicon-duplicate"></span> Penerimaan Barang
       </a>
     </li>

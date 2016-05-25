@@ -60,42 +60,14 @@ class Cont_resepsionis extends CI_Controller
 		return str_pad($text,3,"0",STR_PAD_LEFT);
 		
 	}
-	function informasi()
-	{
-		$data["active1"] = "";
-		$data["active2"] = "";
-		
-		if($this->uri->segment(3) == "dataPasien");
-		{
-			$data["active1"] = "active";
-			$data["active2"] = "";
-		}
-	    if($this->uri->segment(3) == "daftarHarga")
-		{
-			$data["active1"] = "";
-			$data["active2"] = "active";
-		}
-		$this->load->view("Persons/Resepsionis/View_resepsionis_informasi",$data);
-	}
-	function penerimaanBarang()
-	{
-		$this->load->view("Persons/Resepsionis/View_resepsionis_penerimaanBarang");
-	}
-	function penjualan()
-	{
-		$this->load->view("Persons/Resepsionis/View_resepsionis_Penjualan");
-	}
-	function pembayaran()
-	{
-		$this->load->view("Persons/Resepsionis/View_resepsionis_pembayaran");
-	}
+	//____________________________UNTUK NAVIGASI MENU RESEPSIONIS_____________________________________________//
 	function jadwalAntrian()
 	{
 		$data["active1"] = "";
 		$data["active2"] = "";
 		$data["active3"] = "";
 		$data["active4"] = "";
-		switch($this->uri->segment(3))
+		switch($this->uri->segment(4))
 		{
 			case "jadwalPasien":
 			$data["active1"] = "active";

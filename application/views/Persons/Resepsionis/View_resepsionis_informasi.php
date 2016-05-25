@@ -47,10 +47,10 @@
         <span class="caret"></span>
 	    </a>
 	    <ul class="dropdown-menu">
-        <li><a href="<?php echo site_url("Cont_resepsionis/jadwalAntrian/jadwalPasien")?>">Jadwal Pasien</a></li>
-        <li><a href="<?php echo site_url("Cont_resepsionis/jadwalAntrian/reminder")?>">Reminder Pasien</a></li>
-        <li><a href="<?php echo site_url("Cont_resepsionis/jadwalAntrian/followup")?>">Follow Up Pasien</a></li> 
-        <li><a href="<?php echo site_url("Cont_resepsionis/jadwalAntrian/jadwalDokter")?>">Jadwal Dokter</a></li> 
+        <li><a href="<?php echo site_url("Resepsionis/Cont_resepsionis/jadwalAntrian/jadwalPasien")?>">Jadwal Pasien</a></li>
+        <li><a href="<?php echo site_url("Resepsionis/Cont_resepsionis/jadwalAntrian/reminder")?>">Reminder Pasien</a></li>
+        <li><a href="<?php echo site_url("Resepsionis/Cont_resepsionis/jadwalAntrian/followup")?>">Follow Up Pasien</a></li> 
+        <li><a href="<?php echo site_url("Resepsionis/Cont_resepsionis/jadwalAntrian/jadwalDokter")?>">Jadwal Dokter</a></li> 
       </ul>
 	  </li>
 
@@ -67,19 +67,19 @@
 
   	
     <li>
-      <a  style="font-size:14pt;" href="<?php echo site_url("Cont_resepsionis/penjualan")?>">
+      <a  style="font-size:14pt;" href="<?php echo site_url("Resepsionis/Cont_penjualan")?>">
         <span style="font-size:20px" class="glyphicon glyphicon-shopping-cart"></span> Penjualan
       </a>
     </li>
 
     <li>
-      <a href="<?php echo site_url("Cont_resepsionis/pembayaran")?>" style="font-size:14pt;" >
+      <a href="<?php echo site_url("Resepsionis/Cont_pembayaran")?>" style="font-size:14pt;" >
         <span style="font-size:20px" class="glyphicon glyphicon-credit-card"></span> Pembayaran
       </a>
     </li>
 
     <li>
-      <a href="<?php echo site_url("Cont_resepsionis/penerimaanBarang")?>" style="font-size:14pt;">
+      <a href="<?php echo site_url("Resepsionis/Cont_penerimaanBarang")?>" style="font-size:14pt;">
         <span style="font-size:20px" class="glyphicon glyphicon-duplicate"></span> Penerimaan Barang
       </a>
     </li>
