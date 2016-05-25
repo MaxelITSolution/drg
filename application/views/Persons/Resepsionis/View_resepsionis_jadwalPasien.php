@@ -97,14 +97,14 @@
         <span class="caret"></span>
 	    </a>
 	    <ul class="dropdown-menu">
-        <li><a data-toggle="pill" href="#menu1">Jadwal Pasien</a></li>
-        <li><a data-toggle="pill" href="#menu2">Reminder Pasien</a></li>
-        <li><a data-toggle="pill" href="#menu3">Follow Up Pasien</a></li> 
-        <li><a data-toggle="pill" href="#menu4">Jadwal Dokter</a></li> 
+        <li class="<?php echo $active1;?>"><a data-toggle="pill" href="#menu1">Jadwal Pasien</a></li>
+        <li class="<?php echo $active2;?>"><a data-toggle="pill" href="#menu2">Reminder Pasien</a></li>
+        <li class="<?php echo $active3;?>"><a data-toggle="pill" href="#menu3">Follow Up Pasien</a></li> 
+        <li class="<?php echo $active4;?>"><a data-toggle="pill" href="#menu4">Jadwal Dokter</a></li> 
       </ul>
-	  </li>
+	</li>
 
-   <li class="dropdown">
+    <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-size:14pt;" >
         <span style="font-size:20px" class="glyphicon glyphicon-calendar"></span> Informasi
         <span class="caret"></span>
@@ -114,6 +114,7 @@
         <li><a href="<?php echo site_url("Cont_resepsionis/informasi/daftarHarga")?>">Daftar Harga</a></li>
       </ul>
     </li>    
+
   	
     <li>
       <a  style="font-size:14pt;" href="<?php echo site_url("Cont_resepsionis/penjualan")?>">
@@ -142,7 +143,7 @@
 <!-- ini tabel antrian, pakai datatable -->
 <div class="container-fluid">
 	<div class="tab-content">
-		<div id="menu1" class="tab-pane fade in active">
+		<div id="menu1" class=" <?php echo $active1?> tab-pane fade in">
     
       <h2>JADWAL ANTRIAN PASIEN</h2>
       <br>
@@ -214,13 +215,13 @@
 			</table>
 		 </div>
 		</div>
-		<div id="menu2" class="tab-pane fade">
+		<div id="menu2" class=" <?php echo $active2?> tab-pane fade in">
 		  <h3>Reminder Pasien</h3>
 		</div>
-		<div id="menu3" class="tab-pane fade">
+		<div id="menu3" class=" <?php echo $active3?> tab-pane fade in">
 		  <h3>Follow up Pasien</h3>
 		</div>
-		<div id="menu4" class="tab-pane fade">
+		<div id="menu4" class=" <?php echo $active4?> tab-pane fade in">
 		  <h3>Jadwal Dokter</h3>
 		</div>
   </div>

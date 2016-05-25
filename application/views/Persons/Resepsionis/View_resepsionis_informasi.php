@@ -19,56 +19,6 @@
   <script>
 	$(document).ready(function()
 	{
-		listDokter=[];
-		
-		prosesListDokter(<?php echo $dokter;?>);
-		$inputan = $("#datetimepicker4");
-		$inputan.clockpicker({
-			donetext:"done",
-			autoclose:"true"
-		});
-		$("#TambahAntrian").click(function()
-		{
-			$("#myModal").modal("show");
-		})
-		
-		$("#saveButton").click(function()
-		{
-			$.ajax({
-				url:"<?php echo site_url("Cont_resepsionis/tambahAntrian")?>",
-				type:"post",
-				data:{tanggal:$("#tanggal").val(),nama:$("#Nama").val(),waktu:$("#datetimepicker4").val(),dokter:$("#idDokter").val()},
-				success:function(result)
-				{
-					alert(result);
-				}
-			});
-			$("#myModal").modal("hide");
-		})
-		$("#showmodalpenjualan").click(function()
-		{
-			var rightNow = new Date();
-			var res = rightNow.toISOString().slice(0,10).replace(/-/g,"/");
-			$("#TanggalPenjualan").val(res);
-			$("#modalPenjualan").modal("show");
-		})
-		function prosesListDokter(inputan)
-		{
-			$.each(inputan,function(index,value)
-			{
-				listDokter.push({value:value["dokter_nama"],idx:value["dokter_kode"]});
-				
-			})	
-		}
-		
-		$("#Dokter").autocomplete({
-			source:listDokter,
-			select: function(a,b)
-			{
-				$("#idDokter").val(b.item.idx);
-			}
-		});
-		
 		
 	})
 	
@@ -91,29 +41,30 @@
 <!-- ini menu2, lokasi di bawah header, ukuran dibuat agak besar (height), soalnya nanti pemakaiannya di layar touch screen, kasi gambar kalau perlu-->
 <nav class="container-fluid">
   <ul class="nav nav-pills nav-justified">
-    <li class="active dropdown">
+    <li class=" dropdown">
 	    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-size:14pt;" >
         <span style="font-size:20px" class="glyphicon glyphicon-calendar"></span> Jadwal 
         <span class="caret"></span>
 	    </a>
 	    <ul class="dropdown-menu">
-        <li><a data-toggle="pill" href="#menu1">Jadwal Pasien</a></li>
-        <li><a data-toggle="pill" href="#menu2">Reminder Pasien</a></li>
-        <li><a data-toggle="pill" href="#menu3">Follow Up Pasien</a></li> 
-        <li><a data-toggle="pill" href="#menu4">Jadwal Dokter</a></li> 
+        <li><a href="<?php echo site_url("Cont_resepsionis/jadwalAntrian/jadwalPasien")?>">Jadwal Pasien</a></li>
+        <li><a href="<?php echo site_url("Cont_resepsionis/jadwalAntrian/reminder")?>">Reminder Pasien</a></li>
+        <li><a href="<?php echo site_url("Cont_resepsionis/jadwalAntrian/followup")?>">Follow Up Pasien</a></li> 
+        <li><a href="<?php echo site_url("Cont_resepsionis/jadwalAntrian/jadwalDokter")?>">Jadwal Dokter</a></li> 
       </ul>
 	  </li>
 
-   <li class="dropdown">
+    <li class="active dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-size:14pt;" >
         <span style="font-size:20px" class="glyphicon glyphicon-calendar"></span> Informasi
         <span class="caret"></span>
       </a>
       <ul class="dropdown-menu">
-        <li><a href="<?php echo site_url("Cont_resepsionis/informasi/dataPasien")?>">Data Pasien</a></li>
-        <li><a href="<?php echo site_url("Cont_resepsionis/informasi/daftarHarga")?>">Daftar Harga</a></li>
+        <li class="<?php echo $active1?>"><a data-toggle="pill" href="#menu1">Data Pasien</a></li>
+        <li class="<?php echo $active2?>"><a data-toggle="pill" href="#menu2">Daftar Harga</a></li>
       </ul>
     </li>    
+
   	
     <li>
       <a  style="font-size:14pt;" href="<?php echo site_url("Cont_resepsionis/penjualan")?>">
@@ -122,13 +73,13 @@
     </li>
 
     <li>
-      <a  style="font-size:14pt;" href="<?php echo site_url("Cont_resepsionis/pembayaran");?>">
+      <a href="<?php echo site_url("Cont_resepsionis/pembayaran")?>" style="font-size:14pt;" >
         <span style="font-size:20px" class="glyphicon glyphicon-credit-card"></span> Pembayaran
       </a>
     </li>
 
     <li>
-      <a  style="font-size:14pt;" href="<?php echo site_url("Cont_resepsionis/penerimaanBarang")?>">
+      <a href="<?php echo site_url("Cont_resepsionis/penerimaanBarang")?>" style="font-size:14pt;">
         <span style="font-size:20px" class="glyphicon glyphicon-duplicate"></span> Penerimaan Barang
       </a>
     </li>
@@ -142,86 +93,11 @@
 <!-- ini tabel antrian, pakai datatable -->
 <div class="container-fluid">
 	<div class="tab-content">
-		<div id="menu1" class="tab-pane fade in active">
-    
-      <h2>JADWAL ANTRIAN PASIEN</h2>
-      <br>
-
-		  <div class="table-responsive container-fluid">
-			<div style="text-align: center;">
-			Tanggal antrian: <input id="tanggal_antrian" type="date" value="<?php echo date("Y-m-d")?>" />
-			</div>
-
-			<br><br>
-			<div style="text-align: center;">
-			  <button id="TambahAntrian" class="btn_1">Tambah Antrian Baru</button>
-			</div>
-			<br><br>
-
-			<table class="table table-striped table-bordered" style="background-color: white;">
-			  <thead style="background-color: lightgray;">
-				<tr>
-				  <th width="20px">No</th>
-				  <th>Jam</th>
-          <th>Nama Pasien</th>
-          <th>Telp</th>
-          <th>Dokter</th>
-          <th>Perawatan</th>
-          <th>Waktu<br>Datang</th>
-          <th>Waktu<br>Mulai</th>
-          <th>Waktu<br>Selesai</th>
-				  <th class="col-sm-1">&nbsp;</th>
-				</tr>
-			  </thead>
-			  <tbody>
-				<tr>
-				  <td>1</td>
-				  <td>10:30</td>
-          <td>Andi Wijaya</td>
-          <td>08123456789</td>
-          <td>Dr. Antok</td>
-          <td>Tambal</td>
-          <td></td>
-          <td></td>
-				  <td></td>
-				  <td><button class="btn_1">Cancel</button></td>
-				</tr>
-				<tr>
-          <td>2</td>
-          <td>10:30</td>
-          <td>Andi Wijaya</td>
-          <td>08123456789</td>
-          <td>Dr. Antok</td>
-          <td>Tambal</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><button class="btn_1">Cancel</button></td>
-				</tr>
-				<tr>
-          <td>3</td>
-          <td>10:30</td>
-          <td>Andi Wijaya</td>
-          <td>08123456789</td>
-          <td>Dr. Antok</td>
-          <td>Tambal</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><button class="btn_1">Cancel</button></td>
-				</tr>
-			  </tbody>
-			</table>
-		 </div>
+		<div id="menu1" class="<?php echo $active1?> tab-pane fade in">
+			<h3>Data Pasien</h3>
 		</div>
-		<div id="menu2" class="tab-pane fade">
-		  <h3>Reminder Pasien</h3>
-		</div>
-		<div id="menu3" class="tab-pane fade">
-		  <h3>Follow up Pasien</h3>
-		</div>
-		<div id="menu4" class="tab-pane fade">
-		  <h3>Jadwal Dokter</h3>
+		<div id="menu2" class="<?php echo $active2?> tab-pane fade in">
+		  <h3>Daftar Harga</h3>
 		</div>
   </div>
 </div>
