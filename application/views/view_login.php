@@ -13,7 +13,7 @@
       <tr>
         <td>Username</td>
         <td>:</td>
-        <td><input style="width:100%" type="text" id="username" name="username" placeholder="Masukkan Username" /></td>
+        <td><input style="width:100%" type="text" id="username" name="username" placeholder="Masukkan Username" value="kasir" /></td>
       </tr>
       <tr>
         <td>Password</td>

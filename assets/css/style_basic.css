@@ -22,11 +22,14 @@ button.btn_1 {
   background-color: var(--color_button);
   color: white; 
   font-size: 14pt;
-  width: 100px;
-  padding: 5px;
+  min-width: 100px;
+  padding: 5px 10px;
   border-collapse: collapse;
 }
 button.btn_1:hover {
   background-color: var(--color_button_hover);
   cursor: pointer;
+}
+h1,h2,h3,h4,h5,h6 {
+  text-align: center;
 }

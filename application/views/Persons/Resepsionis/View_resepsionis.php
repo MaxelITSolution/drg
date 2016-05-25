@@ -1,22 +1,22 @@
+<!DOCTYPE>
 <html lang="en">
 <head>
  <meta charset="utf-8">
   <?php loadAsset("css/style_basic.css"); ?>
   <?php loadAsset("css/style_drg.css"); ?>
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/login.css")?>" />
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/datepicker.css")?>" />
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/bootstrap/css/bootstrap.min.css")?>"/>
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/bootstrap/css/clockpicker.css")?>"/>
+  <?php loadAsset("css/login.css")?>
+  <?php loadAsset("css/datepicker.css")?>
+  <?php loadAsset("bootstrap/css/bootstrap.min.css")?>
+  <?php loadAsset("bootstrap/css/clockpicker.css")?>
+  <?php loadAsset("css/jquery-ui.min.css")?>
    
-   <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/jquery-ui.min.css")?>" />
-  
    <script src="<?php echo base_url("assets/js/jquery-2.2.3.min.js")?>"></script>
    
    <script src="<?php echo base_url("assets/js/jquery-ui.min.js")?>"></script>
    
    <script src="<?php echo base_url("assets/bootstrap/js/bootstrap.min.js"); ?>"></script>
    <script src="<?php echo base_url("assets/bootstrap/js/clockpicker.js"); ?>"></script> 
-  <Script>
+  <script>
 	$(document).ready(function()
 	{
 		listDokter=[];
@@ -84,7 +84,7 @@
 <header>
 	<ul>
 		<li id="headerKanan"><a href="<?php echo site_url("Cont_login/index");?>">Logout</a></li>
-		<li id="headerKanan"><a>Hello</a></li>
+		<li id="headerKanan"><a>[Resepsionis]</a></li>
 	</ul>
 </header>
 
@@ -93,38 +93,49 @@
   <ul class="nav nav-pills nav-justified">
     <li class="active dropdown">
 	    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-size:14pt;" >
-        <span style="font-size:20px" class="glyphicon glyphicon-calendar"></span> Jadwal Antrian 
+        <span style="font-size:20px" class="glyphicon glyphicon-calendar"></span> Jadwal 
         <span class="caret"></span>
 	    </a>
 	    <ul class="dropdown-menu">
-        <li><a data-toggle="pill" href="#menu1">Daftar</a></li>
-        <li><a data-toggle="pill" href="#">Reminder</a></li>
-        <li><a data-toggle="pill" href="#">Follow Up</a></li> 
+        <li><a data-toggle="pill" href="#menu1">Jadwal Pasien</a></li>
+        <li><a data-toggle="pil2" href="#">Reminder Pasien</a></li>
+        <li><a data-toggle="pil3" href="#">Follow Up Pasien</a></li> 
+        <li><a data-toggle="pil4" href="#">Jadwal Dokter</a></li> 
       </ul>
 	  </li>
-  
-	
-	  <li>
-      <a data-toggle="pill" style="font-size:14pt;" href="#menu3">
-        <span style="font-size:20px" class="glyphicon glyphicon-calendar"></span> Jadwal Dokter
+
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="font-size:14pt;" >
+        <span style="font-size:20px" class="glyphicon glyphicon-calendar"></span> Informasi
+        <span class="caret"></span>
       </a>
-    </li>
+      <ul class="dropdown-menu">
+        <li><a data-toggle="pill" href="#menu1">Data Pasien</a></li>
+        <li><a data-toggle="pil2" href="#">Daftar Harga</a></li>
+      </ul>
+    </li>    
+
+  	
     <li>
       <a data-toggle="pill" style="font-size:14pt;" href="#menu2">
         <span style="font-size:20px" class="glyphicon glyphicon-shopping-cart"></span> Penjualan
       </a>
     </li>
+
     <li>
-      <a data-toggle="pill" style="font-size:14pt;" href="#menu4">
+      <a data-toggle="pill" style="font-size:14pt;" href="#menu3">
         <span style="font-size:20px" class="glyphicon glyphicon-credit-card"></span> Pembayaran
       </a>
     </li>
+
     <li>
-      <a data-toggle="pill" style="font-size:14pt;" href="#menu5">
+      <a data-toggle="pill" style="font-size:14pt;" href="#menu4">
         <span style="font-size:20px" class="glyphicon glyphicon-duplicate"></span> Penerimaan Barang
       </a>
     </li>
+
   </ul>
+
 </nav>
 <!-- Ini pilihan untuk ngubah tanggal. Default tanggal hari ini. Tabel di bawah menampilkan data antrian pada tanggal yg disini -->
 <br><br>
@@ -133,48 +144,72 @@
 <div class="container-fluid">
 	<div class="tab-content">
 		<div id="menu1" class="tab-pane fade in active">
+    
+      <h2>JADWAL ANTRIAN PASIEN</h2>
+      <br>
+
 		  <div class="table-responsive container-fluid">
 			<div style="text-align: center;">
-			Tanggal antrian: <input id="tanggal" type="date" value="<?php echo date("Y-m-d")?>">
+			Tanggal antrian: <input id="tanggal_antrian" type="date" value="<?php echo date("Y-m-d")?>" />
 			</div>
 
 			<br><br>
 			<div style="text-align: center;">
-			  <button id="TambahAntrian">Tambah Antrian Baru</button>
+			  <button id="TambahAntrian" class="btn_1">Tambah Antrian Baru</button>
 			</div>
 			<br><br>
 
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered" style="background-color: white;">
 			  <thead style="background-color: lightgray;">
 				<tr>
 				  <th width="20px">No</th>
-				  <th>Nama Pasien</th>
 				  <th>Jam</th>
-				  <th>Dokter</th>
+          <th>Nama Pasien</th>
+          <th>Telp</th>
+          <th>Dokter</th>
+          <th>Perawatan</th>
+          <th>Waktu<br>Datang</th>
+          <th>Waktu<br>Mulai</th>
+          <th>Waktu<br>Selesai</th>
 				  <th class="col-sm-1">&nbsp;</th>
 				</tr>
 			  </thead>
 			  <tbody>
 				<tr>
 				  <td>1</td>
-				  <td>Andi Wijaya</td>
 				  <td>10:30</td>
-				  <td>Dr. Antok</td>
-				  <td><button>Cancel</button></td>
+          <td>Andi Wijaya</td>
+          <td>08123456789</td>
+          <td>Dr. Antok</td>
+          <td>Tambal</td>
+          <td></td>
+          <td></td>
+				  <td></td>
+				  <td><button class="btn_1">Cancel</button></td>
 				</tr>
 				<tr>
-				  <td>2</td>
-				  <td>Andi Wijaya</td>
-				  <td>10:30</td>
-				  <td>Dr. Antok</td>
-				  <td><button>Cancel</button></td>
+          <td>2</td>
+          <td>10:30</td>
+          <td>Andi Wijaya</td>
+          <td>08123456789</td>
+          <td>Dr. Antok</td>
+          <td>Tambal</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><button class="btn_1">Cancel</button></td>
 				</tr>
 				<tr>
-				  <td>3</td>
-				  <td>Andi Wijaya</td>
-				  <td>10:30</td>
-				  <td>Dr. Antok</td>
-				  <td><button>Cancel</button></td>
+          <td>3</td>
+          <td>10:30</td>
+          <td>Andi Wijaya</td>
+          <td>08123456789</td>
+          <td>Dr. Antok</td>
+          <td>Tambal</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><button class="btn_1">Cancel</button></td>
 				</tr>
 			  </tbody>
 			</table>
@@ -335,5 +370,18 @@
   </div>
 </div>
 <input type="hidden" id="idDokter" value="">
+
+<script>
+  $("#tanggal_antrian").datepicker({
+    minDate: "0",
+    changeMonth: true,
+    changeYear: true,
+    showOtherMonths: true,
+    selectOtherMonths: true,
+    dateFormat: "yy-mm-dd",
+    regional: "id"
+    
+  });
+</script>
 
 <html>
